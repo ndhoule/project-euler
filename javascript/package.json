@@ -1,0 +1,32 @@
+{
+  "name": "project-euler",
+  "version": "0.0.0",
+  "description": "",
+  "main": "001-multiples_three_five.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ndhoule/project-euler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ndhoule/project-euler/issues"
+  },
+  "homepage": "https://github.com/ndhoule/project-euler",
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "lodash-contrib": "~241.4.5",
+    "ramda": "~0.1.2",
+    "lazy.js": "~0.3.2",
+    "require-directory": "~1.2.0"
+  },
+  "devDependencies": {
+    "chai": "~1.9.1",
+    "mocha": "~1.19.0",
+    "sinon": "~1.10.0",
+    "sinon-chai": "~2.5.0"
+  }
+}

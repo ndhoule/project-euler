@@ -15,7 +15,7 @@
 (defn multiples-3-and-5-sol1 [min max]
   (reduce + (filter multiple-of-3-or-5? (range min max))))
 
-; Use `distinct` instead
+; Use `distinct` and range stepping instead
 (defn multiples-3-and-5-sol2 [min max]
   (reduce + (distinct (concat (range min max 3)
                               (range min max 5)))))

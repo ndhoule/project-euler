@@ -1,8 +1,7 @@
 ; https://projecteuler.net/problem=1
 
 (ns euler.001
-  (require [clojure.set :refer :all]
-           [clojure.test :refer [is]]))
+  (require [clojure.set :refer :all]))
 
 (defn multiple-of-n? [n, num]
   (zero? (mod num n)))

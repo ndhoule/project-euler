@@ -3,34 +3,30 @@
 (ns euler.003
   (:require [clojure.math.numeric-tower :as math]))
 
-(def infinity
-  "Shortcut to infinity."
-  Double/POSITIVE_INFINITY)
-
-(defmulti is-prime?
+(defmulti prime?
   "Returns true if a number is divisible by only 1 and itself, false otherwise."
   (fn [n] (cond
-            (> 2 n) :lt2
-            (= 2 n) :is2)))
+            (> 2 n) :not
+            (= 2 n) :is)))
 
-(defmethod is-prime? :lt2 [_] false)
+(defmethod prime? :not [_] false)
 
-(defmethod is-prime? :is2 [_] true)
+(defmethod prime? :is [_] true)
 
-(defmethod is-prime? :default [n]
-  (zero? (count (filter #(zero? (mod n %))
-                     (range 2 (+ 1 (math/sqrt n)))))))
+(defmethod prime? :default [n]
+  (empty? (filter #(zero? (mod n %))
+                  (range 2 (+ 1 (math/sqrt n))))))
 
+(defn primes-below [n]
+  "Returns a lazy seq of all possible primes below n."
+  (filter prime? (range (int (math/floor n)) 1 -1)))
 
-(def primes
-  "Generates an infinite seq of prime numbers."
-  ; Add 2 to the head of the list so we can easily skip all even possibilities
-  (filter is-prime? (cons 2 (range 3 infinity 2))))
+(defn possible-prime-factors-of [n]
+  "Returns a lazy seq of all possible prime factors of n in order of largest to smallest."
+  (primes-below (math/floor (math/sqrt n))))
 
-(defn prime-divisors-of-n [n]
-  (filter #(zero? (mod n %)) (take-while #(<= % (math/sqrt n)) primes)))
-
-(def solution
-  (last (prime-divisors-of-n 600851475143)))
-
-(println solution)
+(defn biggest-prime-divisor-of-n [n]
+  "Lazily retrieves the first prime divisor "
+  (let [possible-primes (possible-prime-factors-of n)]
+    (first (drop-while #(not (zero? (mod n %)))
+                       possible-primes))))

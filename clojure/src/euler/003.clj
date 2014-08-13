@@ -18,15 +18,17 @@
                   (range 2 (+ 1 (math/sqrt n))))))
 
 (defn primes-below [n]
-  "Returns a lazy seq of all possible primes below n."
-  (filter prime? (range (int (math/floor n)) 1 -1)))
+  "Returns a lazy seq of all possible primes less than n."
+  ; Use `int` to cast and floor n, subtract 1 so it's exclusive of `n`
+  (filter prime? (range (dec (int n)) 1 -1)))
 
 (defn possible-prime-factors-of [n]
   "Returns a lazy seq of all possible prime factors of n in order of largest to smallest."
-  (primes-below (math/floor (math/sqrt n))))
+  ; Add 1 so `primes-below` results includes `sqrt(n)`
+  (primes-below (inc (math/floor (math/sqrt n)))))
 
 (defn biggest-prime-divisor-of-n [n]
-  "Lazily retrieves the first prime divisor "
+  "Returns the first prime divisor of n, or `nil` if ."
   (let [possible-primes (possible-prime-factors-of n)]
     (first (drop-while #(not (zero? (mod n %)))
                        possible-primes))))

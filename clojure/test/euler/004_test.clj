@@ -2,7 +2,7 @@
   (:require [clojure.test :refer :all]
             [euler.004 :refer :all]))
 
-(deftest euler-003
+(deftest euler-004
   (testing "palindromic-number?"
     (is (false? (palindromic-number? 10)))
     (is (false? (palindromic-number? 102)))

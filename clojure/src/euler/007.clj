@@ -8,6 +8,7 @@
   Double/POSITIVE_INFINITY)
 
 (defmulti prime?
+  "Returns `true` if a number is divisible only by itself and 1, and `false` otherwise."
   (fn [x] (cond
             (> 2 x) :not
             (= 2 x) :is)))
@@ -27,6 +28,7 @@
     (filter prime? (range 11 infinity 2))))
 
 (defn n-primes [n]
+  "Returns the first n primes."
   (take n primes))
 
 (def solution

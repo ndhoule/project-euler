@@ -13,4 +13,4 @@
     (is (true? (palindromic-number? 9009))))
 
   (testing "solution"
-    (is (= 580085 largest-palindromic-product))))
+    (is (= 906609 largest-palindromic-product))))

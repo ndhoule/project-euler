@@ -24,8 +24,7 @@
   "A lazy seq of all primes. (Mildly inefficient; should use `clojure.contrib.lazy-seq` instead.)"
   (concat
     [2 3 5 7]
-    (lazy-seq
-      (filter prime? (range 11 infinity 2)))))
+    (filter prime? (range 11 infinity 2))))
 
 (defn n-primes [n]
   (take n primes))

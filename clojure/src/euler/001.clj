@@ -1,14 +1,12 @@
 ; https://projecteuler.net/problem=1
 
 (ns euler.001
-  (require [clojure.set :refer :all]))
-
-(defn multiple-of-n? [n, num]
-  (zero? (mod num n)))
+  (require [euler.util :as util]
+           [clojure.set :refer :all]))
 
 (defn multiple-of-3-or-5? [n]
-  (or (multiple-of-n? 3 n)
-      (multiple-of-n? 5 n)))
+  (or (util/multiple-of? 3 n)
+      (util/multiple-of? 5 n)))
 
 ; Produce the entire range of numbers and then filter it down
 (defn multiples-3-and-5-sol1 [min max]

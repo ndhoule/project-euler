@@ -7,17 +7,8 @@
 ; What is the smallest positive number that is evenly divisible by all of the
 ; numbers from 1 to 20?
 
-(ns euler.005)
-
-(defn gcd [a b]
-  "Returns the greatest common denominator of two numbers."
-  (if (zero? b)
-    a
-    (recur b (mod a b))))
-
-(defn lcm [a b]
-  "Returns the least common multiple of two numbers."
-  (/ (* a b) (gcd a b)))
+(ns euler.005
+  (:require [euler.util :as util]))
 
 (def solution
   ; "Smallest possible number evenly divisible by all numbers" rephrased is
@@ -25,4 +16,4 @@
   ;
   ; Iterate through the range, finding in turn the LCM of each number and an
   ; accumulator (the common LCM so far)
-  (reduce lcm (range 1 21)))
+  (reduce util/lcm (range 1 21)))

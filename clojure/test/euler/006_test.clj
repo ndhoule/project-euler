@@ -3,11 +3,6 @@
             [euler.006 :refer :all]))
 
 (deftest euler-006
-  (testing "square"
-    (is (= 4 (square -2)))
-    (is (= 4 (square 2)))
-    (is (= 64 (square 8))))
-
   (testing "sum-of-range-squares"
     (is (= 0 (sum-of-range-squares 0 -11)))
     (is (= 0 (sum-of-range-squares 0 1)))

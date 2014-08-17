@@ -3,7 +3,6 @@
             [euler.util :refer :all]))
 
 (deftest euler-util
-
   (testing "square"
     (is (= 4 (square -2)))
     (is (= 4 (square 2)))
